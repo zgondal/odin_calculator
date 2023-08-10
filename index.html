@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <header>
+        <p>Calculator</p>
+    </header>
+    <main class="main">
+        <div class="left"></div>
+        <div class="center">
+            <div class="calculator">
+                <div class="grid-item screen">
+                    <p>0</p>
+                </div>
+                <div class="grid-item row1">
+                    <button class="column1 clear">C</button>
+                    <button class="column2 operator">±</button>
+                    <button class="column3 operator">%</button>
+                    <button id="column4" class="operator">÷</button>
+                </div>
+                <div class="grid-item row2">
+                    <button class="column1 operand">7</button>
+                    <button class="column2 operand">8</button>
+                    <button class="column3 operand">9</button>
+                    <button id="column4" class="operator">x</button>
+                </div>
+                <div class="grid-item row3">
+                    <button class="column1 operand">4</button>
+                    <button class="column2 operand">5</button>
+                    <button class="column3 operand">6</button>
+                    <button id="column4" class="operator">-</button>
+                </div>
+                <div class="grid-item row4">
+                    <button class="column1 operand">1</button>
+                    <button class="column2 operand">2</button>
+                    <button class="column3 operand">3</button>
+                    <button id="column4" class="operator">+</button>
+                </div>
+                <div class="grid-item row5">
+                    <button class="column1 column2" id="zero"> 0 </button>
+                    <button class="column3 operand">.</button>
+                    <button id="column4">=</button> 
+                </div>
+            </div>
+        </div>
+        <div class="right"></div>
+    </main>
+    <script>
+        const buttons = document.querySelectorAll('button');
+        let operand1 = "";
+        let operand2 = "";
+        let operator = 
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                if (!operator && button.classList.contains('operand')) {
+
+                }
+            })
+        })
+        function getOperand1(button) {
+            
+        }
+    </script>
+</body>
+</html>

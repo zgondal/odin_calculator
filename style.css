@@ -1,0 +1,101 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #202124;
+    color: #e8eaed;
+    font-family:Arial, Helvetica, sans-serif;
+    height: 90vh;
+}
+
+header {
+    font-size: 32px;
+    flex: 1;
+}
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90vw;
+    height: 80vh;
+    flex: 4;
+}
+
+main .left {
+    flex: 1;
+}
+
+main .center {
+    flex-shrink: 0;
+    flex-grow: 0;
+    min-height: 60vh;
+    max-width: 20vw;
+}
+
+main .center .calculator {
+    display: grid;
+    grid-template-columns: repeat(1fr);
+    /* flex-direction: column;
+    justify-content: space-between;
+    align-items: center; */
+    /* grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr; */
+}
+
+main .right {
+    flex: 1;
+}
+
+
+button {
+    border-radius: 50%;
+    border: 0px;
+    font-size: 28px;
+    padding: 4px 10px;
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+}
+
+.row1, .row2, .row3, .row4, .row5 {
+    display:flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 8px;
+}
+
+.row1 button {
+    background-color: #9f9f9f;
+}
+
+.row2 button, .row3 button, .row4 button, .row5 button {
+    background-color: #313131;
+    color: white;
+}
+
+#column4 {
+    background-color: #f69906;
+    color: white;
+    /* padding: 4px 10px 7px */
+}
+
+.screen {
+    border: 1px solid;
+    border-radius: 8px;
+    text-align: right;
+    padding: 4px 18px;
+    font-size: 32px;
+    
+    flex-grow: 1 1 0;
+}
+
+.screen p {
+    margin: 2px;
+    text-align: right;
+}
+
+.row5 #zero {
+    grid-column: (span 2);
+}
+
