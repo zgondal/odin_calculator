@@ -43,7 +43,7 @@
                     <button id="column4" class="operator">+</button>
                 </div>
                 <div class="grid-item row5">
-                    <button class="column1 column2" id="zero"> 0 </button>
+                    <button class="column1 column2" id="zero">0</button>
                     <button class="column3 operand decimal">.</button>
                     <button id="column4" class="equals">=</button> 
                 </div>
@@ -60,6 +60,7 @@
             '-': 'subtract',
             'x': 'multiply',
             '÷': 'divide',
+            '%': 'percent',
         };
         let operator;
         let result;
@@ -100,16 +101,18 @@
         }
 
         function detectOperator(button) {
-            if (operators.hasOwnProperty(topDisplay.textContent.charAt(topDisplay.textContent.length-2))) return;
             input = button.textContent;
-            if (result) {
+            console.log(`operator clicker: ${input}`);
+            if (operators.hasOwnProperty(topDisplay.textContent.charAt(topDisplay.textContent.length-2)) && !bottomDisplay.textContent) {
+                operator = operators[input];
+                topDisplay.textContent = topDisplay.textContent.substring(0, topDisplay.textContent.length-2) + input + ' ';
+            } else if (result) {
                 console.log(`operator block1`);
-                topDisplay.textContent = result;
+                topDisplay.textContent = result + ' ' + input + ' ';
                 bottomDisplay.textContent = "";
                 operand1 = parseInt(result);
                 result = 0;
-            }
-            if (!operand1) {
+            } else if (!operand1) {bottomDisplay.textContent
                 operand1 = parseFloat(bottomDisplay.textContent);
                 operator = operators[input];
                 topDisplay.textContent = bottomDisplay.textContent + ' ' + input + ' ';
@@ -117,19 +120,19 @@
                 console.log('operator block2');
             } else if (operand1 && !operand2) {
                 operand2 = parseFloat(bottomDisplay.textContent);
-                topDisplay.textContent += bottomDisplay.textContent + ' ' + input + ' ';
+                topDisplay.textContent += operand2 + ' ' + input + ' ';
                 bottomDisplay.textContent = '';
                 operator = operators[input];
                 operand1 = evaluate(operand1, operand2, operator);
                 console.log('operator block3');
-                // operand2 = 0;
-            } else {
-                operand2 = parseFloat(bottomDisplay.textContent);
-                topDisplay.textContent += bottomDisplay.textContent + ' ' + input + ' ';
-                bottomDisplay.textContent = '';
-                operator = operators[input];
-                operand1 = evaluate(operand1, operand2, operator);
-                console.log('operator block4');
+                operand2 = 0;
+            // } else {
+            //     operand2 = parseFloat(bottomDisplay.textContent);
+            //     topDisplay.textContent += bottomDisplay.textContent + ' ' + input + ' ';
+            //     bottomDisplay.textContent = '';
+            //     operator = operators[input];
+            //     operand1 = evaluate(operand1, operand2, operator);
+            //     console.log('operator block4');
             }
         }
         
@@ -138,6 +141,7 @@
             else if (operator === 'subtract') {return operand1 - operand2;}
             else if (operator === 'multiply') {return operand1 * operand2;}
             else if (operator === 'divide') {return operand1 / operand2;}
+            else if (operator === 'percent') {return operand1 / 100;}
         }
 
         function equals() {
@@ -146,16 +150,20 @@
                 return;
             } else if (!operand1) {
                 operand1 = parseInt(bottomDisplay.textContent);
-                topDisplay.textContent = operand1;
+                topDisplay.textContent = operand1 + ' ';
                 console.log('equals block2');
+            } else if (parseInt(topDisplay.textContent.charAt(topDisplay.textContent.length - 2))) {
+                operand1 = parseInt(bottomDisplay.textContent);
+                topDisplay.textContent = operand1 + ' ';
+                console.log('equals block3')
             } else {
                 operand2 = parseFloat(bottomDisplay.textContent);
-                topDisplay.textContent += bottomDisplay.textContent;
+                topDisplay.textContent += bottomDisplay.textContent + ' ';
                 result = evaluate(operand1, operand2, operator);
                 bottomDisplay.textContent = result;
-                // operand2 = 0;
+                operand2 = 0;
                 operand1 = result;
-                console.log('equals block3');
+                console.log('equals block4');
             }
             
         }

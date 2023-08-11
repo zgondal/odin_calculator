@@ -77,7 +77,12 @@ button {
 #column4 {
     background-color: #f69906;
     color: white;
+    flex: 1 0;
     /* padding: 4px 10px 7px */
+}
+
+.decimal {
+    flex: 2 0;
 }
 
 .screen {
@@ -99,6 +104,8 @@ button {
 }
 
 .row5 #zero {
-    grid-column: (span 2);
+    /* grid-column: (span 2); */
+    flex: 2 0 1;
+    border-radius: 32px;
 }
 
