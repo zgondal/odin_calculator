@@ -85,7 +85,7 @@ button {
     color: white;
     /* flex: 1 0; */
     min-width: 42px;
-    padding: 4px 10px 7px;
+    padding: 4px 10px 4px;
 }
 
 .decimal {
