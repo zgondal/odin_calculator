@@ -28,13 +28,13 @@
                     <button class="column1 operand">7</button>
                     <button class="column2 operand">8</button>
                     <button class="column3 operand">9</button>
-                    <button id="column4" class="operator">x</button>
+                    <button id="column4" class="operator">×</button>
                 </div>
                 <div class="grid-item row3">
                     <button class="column1 operand">4</button>
                     <button class="column2 operand">5</button>
                     <button class="column3 operand">6</button>
-                    <button id="column4" class="operator">-</button>
+                    <button id="column4" class="operator">−</button>
                 </div>
                 <div class="grid-item row4">
                     <button class="column1 operand">1</button>
@@ -43,9 +43,9 @@
                     <button id="column4" class="operator">+</button>
                 </div>
                 <div class="grid-item row5">
-                    <button class="column1 column2" id="zero">0</button>
+                    <button class="column1 operand" id="zero">0</button>
                     <button class="column3 operand decimal">.</button>
-                    <button id="column4" class="equals">=</button> 
+                    <button id="equals" class="equals">=</button> 
                 </div>
             </div>
         </div>
@@ -57,8 +57,8 @@
         let operand2;
         let operators = {
             '+': 'add',
-            '-': 'subtract',
-            'x': 'multiply',
+            '−': 'subtract',
+            '×': 'multiply',
             '÷': 'divide',
             '%': 'percent',
         };
@@ -87,11 +87,19 @@
                 })});
 
         function updateDisplay(button) {
-            let input = "";
-            if (bottomDisplay.textContent.includes('.') && button.textContent === '.') {
-                input = "";    
+            let input = button.textContent;
+            if (input === '0' && bottomDisplay.textContent === '0') {return;}
+            if (result) {
+                bottomDisplay.textContent = input;
+                topDisplay.textContent = '';
+                result = 0;
+                operand1 = 0;
+                console.log('operand block 1');
+            } else if (bottomDisplay.textContent.includes('.') && button.textContent === '.') {
+                input = "";
+                console.log('operand block2');
             } else {
-                input = button.textContent;
+                console.log('operand block3');
                 if (!bottomDisplay.textContent) {
                     bottomDisplay.textContent = input;
                 } else {
@@ -107,11 +115,13 @@
                 operator = operators[input];
                 topDisplay.textContent = topDisplay.textContent.substring(0, topDisplay.textContent.length-2) + input + ' ';
             } else if (result) {
-                console.log(`operator block1`);
+                console.log(`operator block1. result: ${result}`);
                 topDisplay.textContent = result + ' ' + input + ' ';
                 bottomDisplay.textContent = "";
-                operand1 = parseInt(result);
+                operand1 = parseFloat(result);
+                operator = operators[input];
                 result = 0;
+                console.log(`operand1: ${operand1}, operator: ${operator}, input: ${input}`);
             } else if (!operand1) {bottomDisplay.textContent
                 operand1 = parseFloat(bottomDisplay.textContent);
                 operator = operators[input];
@@ -126,13 +136,6 @@
                 operand1 = evaluate(operand1, operand2, operator);
                 console.log('operator block3');
                 operand2 = 0;
-            // } else {
-            //     operand2 = parseFloat(bottomDisplay.textContent);
-            //     topDisplay.textContent += bottomDisplay.textContent + ' ' + input + ' ';
-            //     bottomDisplay.textContent = '';
-            //     operator = operators[input];
-            //     operand1 = evaluate(operand1, operand2, operator);
-            //     console.log('operator block4');
             }
         }
         
@@ -149,11 +152,13 @@
                 console.log('equals block1');
                 return;
             } else if (!operand1) {
-                operand1 = parseInt(bottomDisplay.textContent);
+                operand1 = parseFloat(bottomDisplay.textContent);
                 topDisplay.textContent = operand1 + ' ';
+                bottomDisplay.textContent = '';
+                result = operand1;
                 console.log('equals block2');
             } else if (parseInt(topDisplay.textContent.charAt(topDisplay.textContent.length - 2))) {
-                operand1 = parseInt(bottomDisplay.textContent);
+                operand1 = parseFloat(bottomDisplay.textContent);
                 topDisplay.textContent = operand1 + ' ';
                 console.log('equals block3')
             } else {
@@ -165,9 +170,7 @@
                 operand1 = result;
                 console.log('equals block4');
             }
-            
         }
-        
     </script>
 </body>
 </html>

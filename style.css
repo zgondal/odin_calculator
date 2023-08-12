@@ -12,6 +12,8 @@ body {
 header {
     font-size: 32px;
     flex: 1;
+    margin-left: 42px;
+    text-align: center;
 }
 main {
     display: flex;
@@ -67,22 +69,28 @@ button {
 
 .row1 button {
     background-color: #9f9f9f;
+    min-width: 42px;
+    max-width: 42px;
+    padding: 4px 10px 4px;
 }
 
 .row2 button, .row3 button, .row4 button, .row5 button {
     background-color: #313131;
     color: white;
+    
 }
 
 #column4 {
     background-color: #f69906;
     color: white;
-    flex: 1 0;
-    /* padding: 4px 10px 7px */
+    /* flex: 1 0; */
+    min-width: 42px;
+    padding: 4px 10px 7px;
 }
 
 .decimal {
-    flex: 2 0;
+    flex: 1 0;
+    min-width: 42px;
 }
 
 .screen {
@@ -95,6 +103,7 @@ button {
     flex-grow: 1 1 0;
     display: flex;
     flex-direction: column;
+    font-weight: 700;
 }
 
 .screen p {
@@ -103,9 +112,15 @@ button {
     text-align: right;
 }
 
-.row5 #zero {
+#zero {
+    max-width: 42px;
+}
+
+#equals {
     /* grid-column: (span 2); */
-    flex: 2 0 1;
-    border-radius: 32px;
+    /* flex: 2 0 1; */
+    background-color: #f69906;
+    color: white;
+    border-radius: 2.5rem;
 }
 
