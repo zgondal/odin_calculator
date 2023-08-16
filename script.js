@@ -57,6 +57,14 @@ function updateDisplay(button) {
 function detectOperator(button) {
     input = button.textContent;
     console.log(`operator clicker: ${input}`);
+    if (input === '±' && bottomDisplay.textContent) {
+        bottomDisplay.textContent = parseFloat(bottomDisplay.textContent) * -1;
+        return;
+    }
+    if (input === '%' && bottomDisplay.textContent) {
+        bottomDisplay.textContent = parseFloat(bottomDisplay.textContent) / 100;
+        return;
+    }
     if (operators.hasOwnProperty(topDisplay.textContent.charAt(topDisplay.textContent.length-2)) && !bottomDisplay.textContent) {
         operator = operators[input];
         topDisplay.textContent = topDisplay.textContent.substring(0, topDisplay.textContent.length-2) + input + ' ';
