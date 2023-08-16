@@ -35,6 +35,7 @@ main .center {
     /* max-width: 20vw; */
     background-color: #202124;
     border-radius: 8px;
+    border: 12px solid #202124;
 }
 
 main .center .calculator {
