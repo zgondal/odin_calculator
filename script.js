@@ -76,7 +76,9 @@ function detectOperator(button) {
         operator = operators[input];
         result = 0;
         console.log(`operand1: ${operand1}, operator: ${operator}, input: ${input}`);
-    } else if (!operand1) {bottomDisplay.textContent
+    } else if (!operand1 && !bottomDisplay.textContent) {
+        return;
+    } else if (!operand1) {
         operand1 = parseFloat(bottomDisplay.textContent);
         operator = operators[input];
         topDisplay.textContent = operand1 + ' ' + input + ' ';
@@ -106,9 +108,7 @@ function equals() {
         console.log('equals block1');
         return;
     } else if (!operand1) {
-        operand1 = parseFloat(bottomDisplay.textContent);
-        topDisplay.textContent = operand1 + ' ';
-        bottomDisplay.textContent = '';
+        if (!bottomDisplay.textContent) {return;}
         result = operand1;
         console.log('equals block2');
     } else if (parseInt(topDisplay.textContent.charAt(topDisplay.textContent.length - 2))) {
