@@ -82,7 +82,8 @@ button {
 }
 
 .row1 button:active {
-    box-shadow: -2px -2px #9f9f9f;
+    box-shadow: inset 1px 2px 5px #c1c1c1;
+    transform: translateY(1px);
 }
 
 .row2 button, .row3 button, .row4 button, .row5 button {
@@ -100,7 +101,12 @@ button {
 }
 
 #column4:hover {
-    background-color: #f8c675;
+    background-color: #fabd5b;
+}
+
+#column4:active {
+    box-shadow: inset 1px 2px 5px #ffffff;
+    transform: translateY(1px);
 }
 
 .decimal {
@@ -119,16 +125,20 @@ button {
     display: flex;
     flex-direction: column;
     font-weight: 700;
+    overflow: auto;
+    max-width: 180px;
 }
 
 .screen p {
     min-height: 40px;
     margin: 2px;
     text-align: right;
+    overflow: auto;
 }
 
 .screen .bottom {
-    font-size: 32px;
+    font-size: 26px;
+    overflow: auto;
 }
 
 #zero {
@@ -148,7 +158,8 @@ button {
 }
 
 #equals:active {
-    box-shadow: -2px -2px #f69906;
+    box-shadow: inset 1px 2px 5px #ffffff;
+    transform: translateY(1px);
 }
 
 .operand:hover {
@@ -156,7 +167,8 @@ button {
 }
 
 .operand:active {
-    box-shadow: -2px -2px #515050;
+    box-shadow: inset 1px 2px 5px #515050;
+    transform: translateY(1px);
 }
 
 
